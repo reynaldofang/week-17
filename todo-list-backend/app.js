@@ -7,7 +7,7 @@ const port = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-const mongoURL = "mongodb://mongo:hm06glrlF7qYBkjPgmAG@containers-us-west-175.railway.app:7213"; // Ganti dengan URL MongoDB Anda
+const mongoURL = "mongodb://mongo:hm06glrlF7qYBkjPgmAG@containers-us-west-175.railway.app:7213"; 
 
 mongoose
   .connect(mongoURL, {
