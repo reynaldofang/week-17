@@ -1,34 +1,55 @@
-import React, { useState } from "react";
-import AddTask from "../src/components/AddTask";
-import ListTask from "../src/components/ListTask";
-import Box from "@mui/material/Box";
+import React, { useState, useEffect } from "react";
+import AddTask from "./components/AddTask";
+import ListTask from "./components/ListTask";
+import axios from "axios";
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const apiUrl = "http://localhost:3001"; // Ganti dengan URL backend Anda
 
-  const handleAddTask = (task) => {
-    setTasks([...tasks, task]);
+  const fetchTasks = () => {
+    axios
+      .get(`${apiUrl}/api/tasks`)
+      .then((response) => {
+        setTasks(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching tasks:", error);
+      });
   };
 
-  const handleTaskDelete = (index) => {
-    const newTasks = [...tasks];
-    newTasks.splice(index, 1);
-    setTasks(newTasks);
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
+  const handleAddTask = (task) => {
+    axios
+      .post(`${apiUrl}/api/tasks`, { title: task })
+      .then((response) => {
+        setTasks([...tasks, response.data]);
+      })
+      .catch((error) => {
+        console.error("Error adding task:", error);
+      });
+  };
+
+  const handleTaskDelete = (taskId) => {
+    axios
+      .delete(`${apiUrl}/api/tasks/${taskId}`)
+      .then(() => {
+        setTasks(tasks.filter((task) => task._id !== taskId));
+      })
+      .catch((error) => {
+        console.error("Error deleting task:", error);
+      });
   };
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-      minHeight="100vh"
-
-    >
+    <div>
       <h1 className="text-3xl font-semibold mb-4">To-Do List</h1>
       <AddTask onAddTask={handleAddTask} />
       <ListTask tasks={tasks} onTaskDelete={handleTaskDelete} />
-    </Box>
+    </div>
   );
 }
 

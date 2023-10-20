@@ -17,8 +17,6 @@ const AddTask = ({ onAddTask }) => {
 
   return (
     <div className="col-12 col-sm-9 col-lg-8 col-xl-6 col-xxl-4">
-      {" "}
-      {/* Mengatur lebar kolom */}
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <TextField

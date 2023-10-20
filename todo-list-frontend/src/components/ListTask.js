@@ -9,14 +9,14 @@ import DeleteIcon from "@mui/icons-material/Delete";
 const ListTask = ({ tasks, onTaskDelete }) => {
   return (
     <List>
-      {tasks.map((task, index) => (
-        <ListItem key={index}>
-          <ListItemText primary={task} />
+      {tasks.map((task) => (
+        <ListItem key={task._id}>
+          <ListItemText primary={task.title} />
           <ListItemSecondaryAction>
             <IconButton
               edge="end"
               aria-label="delete"
-              onClick={() => onTaskDelete(index)}
+              onClick={() => onTaskDelete(task._id)}
             >
               <DeleteIcon />
             </IconButton>
