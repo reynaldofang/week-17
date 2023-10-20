@@ -5,7 +5,7 @@ import axios from "axios";
 
 function App() {
   const [tasks, setTasks] = useState([]);
-  const apiUrl = "http://localhost:3001"; // Ganti dengan URL backend Anda
+  const apiUrl = "https://api-reynaldo16.cyclic.app"; // Ganti dengan URL backend Anda
 
   const fetchTasks = () => {
     axios
