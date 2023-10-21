@@ -11,7 +11,7 @@ If you want to follow me on social media, you can directly click the link below.
 Connect Frontend with Backend 
 
 Deploy in Firebase
-[Trying My Website Deploy](hhttps://week-17-reynaldofang.web.app/)
+![Trying My Website Deploy](hhttps://week-17-reynaldofang.web.app/)
 
 
 
